@@ -6,10 +6,26 @@ using UnityEngine.EventSystems;
 
 public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
 {
+    [SerializeField] private Health health = null;
     [SerializeField] private GameObject unitPrefab = null;
     [SerializeField] private Transform unitSpawnPoint = null;
 
     #region Server
+    public override void OnStartServer() {
+        health.ServerOnDie += ServerHandleDie;
+        base.OnStartServer();
+    }
+
+    public override void OnStopServer() {
+        health.ServerOnDie -= ServerHandleDie;
+        base.OnStopServer();
+    }
+
+    [Server]
+    private void ServerHandleDie() {
+        NetworkServer.Destroy(gameObject);
+    }
+
     [Command]
     private void CmdSpawnUnit() {
         GameObject unitInstance = Instantiate(unitPrefab, unitSpawnPoint.position, unitSpawnPoint.rotation);
