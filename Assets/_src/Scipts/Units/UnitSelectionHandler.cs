@@ -30,7 +30,7 @@ public class UnitSelectionHandler : MonoBehaviour
     }
 
     private void Update() {
-        if (_player is null) {
+        if (_player == null) {
             _player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
         }
 

@@ -15,11 +15,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Terrain
+  - Projectiles
+  - Unit
+  - Minimap
+  - Floor
   - 
   - 
   - 
