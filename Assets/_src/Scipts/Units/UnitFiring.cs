@@ -15,7 +15,7 @@ public class UnitFiring : NetworkBehaviour
     [ServerCallback]
     private void Update() {
         Targetable target = targeter.Target;
-        if (target is null)
+        if (target == null)
             return;
 
         if (!CanFireAtTarget())
