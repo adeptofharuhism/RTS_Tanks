@@ -12,6 +12,14 @@ public class UnitCommandGiver : MonoBehaviour
         _mainCamera = Camera.main;
     }
 
+    private void OnEnable() {
+        GameOverHandler.ClientOnGameOver += ClientHandleGameOver;
+    }
+
+    private void OnDisable() {
+        GameOverHandler.ClientOnGameOver -= ClientHandleGameOver;
+    }
+
     private void Update() {
         if (!Mouse.current.rightButton.wasPressedThisFrame)
             return;
@@ -43,5 +51,9 @@ public class UnitCommandGiver : MonoBehaviour
         foreach (Unit unit in unitSelectionHandler.SelectedUnits) {
             unit.Targeter.CmdSetTarget(target.gameObject);
         }
+    }
+
+    private void ClientHandleGameOver(string winner) {
+        enabled = false;
     }
 }

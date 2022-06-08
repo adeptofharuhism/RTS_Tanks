@@ -18,6 +18,12 @@ public class Health : NetworkBehaviour
     #region Server
     public override void OnStartServer() {
         _currentHealth = maxHealth;
+
+        UnitBase.ServerOnPlayerDie += ServerHandlePlayerDie;
+    }
+
+    public override void OnStopServer() {
+        UnitBase.ServerOnPlayerDie -= ServerHandlePlayerDie;
     }
 
     public void DealDamage(int damageAmount) {
@@ -30,8 +36,14 @@ public class Health : NetworkBehaviour
             return;
 
         ServerOnDie?.Invoke();
+    }
 
-        Debug.Log("AMOGUS IS DEAD");
+    [Server]
+    private void ServerHandlePlayerDie(int connectionId) {
+        if (connectionToClient.connectionId != connectionId)
+            return;
+
+        DealDamage(_currentHealth);
     }
     #endregion
 
