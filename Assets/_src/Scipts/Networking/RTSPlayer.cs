@@ -2,14 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System;
 
 public class RTSPlayer : NetworkBehaviour
 {
     [SerializeField] private Building[] buildings = new Building[0];
 
+    public event Action<int> ClientOnResourcesUpdated;
+
+    [SyncVar(hook = nameof(ClientHandleResourcesUpdated))]
+    private int _resources = 500;
+
     private List<Unit> myUnits = new List<Unit>();
     private List<Building> myBuildings = new List<Building>();
 
+    public int Resources => _resources;
     public List<Unit> MyUnits => myUnits;
     public List<Building> MyBuildings => myBuildings;
 
@@ -54,6 +61,11 @@ public class RTSPlayer : NetworkBehaviour
             return;
 
         myBuildings.Remove(building);
+    }
+
+    [Server]
+    public void AddResources(int amount) {
+        _resources += amount;
     }
 
     [Command]
@@ -112,6 +124,10 @@ public class RTSPlayer : NetworkBehaviour
 
     private void AuthorityHandleBuildingDespawned(Building building) {
         myBuildings.Remove(building);
+    }
+
+    private void ClientHandleResourcesUpdated(int oldValue,int newValue) {
+        ClientOnResourcesUpdated?.Invoke(newValue);
     }
     #endregion
 }

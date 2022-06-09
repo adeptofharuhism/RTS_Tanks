@@ -375,14 +375,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8141965927708195914, guid: dd6bba1e326233e4ba6424ea84ce0b8c, type: 3}
-      propertyPath: onlineScene
-      value: Assets/_src/Scenes/Scene_Map_01.unity
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141965927708195914, guid: dd6bba1e326233e4ba6424ea84ce0b8c, type: 3}
-      propertyPath: offlineScene
-      value: Assets/_src/Scenes/Scene_Menu.unity
-      objectReference: {fileID: 0}
     - target: {fileID: 8141965927708195918, guid: dd6bba1e326233e4ba6424ea84ce0b8c, type: 3}
       propertyPath: m_Name
       value: NetworkManager

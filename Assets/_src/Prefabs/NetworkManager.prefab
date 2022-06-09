@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8141965927708195918}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -50,8 +50,8 @@ MonoBehaviour:
   runInBackground: 1
   autoStartServerBuild: 1
   serverTickRate: 30
-  offlineScene: 
-  onlineScene: 
+  offlineScene: Assets/_src/Scenes/Scene_Menu.unity
+  onlineScene: Assets/_src/Scenes/Scene_Map_01.unity
   transport: {fileID: 8141965927708195913}
   networkAddress: localhost
   maxConnections: 100
@@ -63,6 +63,7 @@ MonoBehaviour:
   - {fileID: 1103434367688489338, guid: cf1961e46dc4dff4683b2b2d5ba9c447, type: 3}
   - {fileID: 6433017320154815411, guid: 790d0f2529b2f794eb2d2bc991628a78, type: 3}
   - {fileID: 6433017320154815411, guid: 65c32c75801517b4aa5054d0fb0802d3, type: 3}
+  - {fileID: 6433017320154815411, guid: e3b6443910a45f748bcff10338e4d5cd, type: 3}
   - {fileID: 469461106847145786, guid: 856c5ca0c2a2bee48a428d7ad59348b1, type: 3}
   - {fileID: 7558604125844680656, guid: e48d7acda00c28f4588f488334534bb4, type: 3}
   unitSpawnerPrefab: {fileID: 6433017320154815411, guid: 790d0f2529b2f794eb2d2bc991628a78, type: 3}
