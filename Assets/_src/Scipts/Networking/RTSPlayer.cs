@@ -5,6 +5,8 @@ using Mirror;
 
 public class RTSPlayer : NetworkBehaviour
 {
+    [SerializeField] private Building[] buildings = new Building[0];
+
     private List<Unit> myUnits = new List<Unit>();
     private List<Building> myBuildings = new List<Building>();
 
@@ -52,6 +54,26 @@ public class RTSPlayer : NetworkBehaviour
             return;
 
         myBuildings.Remove(building);
+    }
+
+    [Command]
+    public void CmdTryPlaceBuilding(int buildingId, Vector3 placeToBuild) {
+        Building buildingToPlace = null;
+
+        foreach (var building in buildings) {
+            if (building.Id == buildingId) {
+                buildingToPlace = building;
+                break;
+            }
+        }
+
+        if (buildingToPlace == null)
+            return;
+
+        GameObject buildingInstance = 
+            Instantiate(buildingToPlace.gameObject, placeToBuild, buildingToPlace.transform.rotation);
+
+        NetworkServer.Spawn(buildingInstance, connectionToClient);
     }
     #endregion
 

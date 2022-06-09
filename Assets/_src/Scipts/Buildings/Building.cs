@@ -20,6 +20,7 @@ public class Building : NetworkBehaviour
     public GameObject BuildingPreview => buildingPreview;
     public Sprite Icon => icon;
     public int Price => price;
+    public int Id => id;
 
     #region Server
     public override void OnStartServer() {
