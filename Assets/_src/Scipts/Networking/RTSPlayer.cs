@@ -68,6 +68,11 @@ public class RTSPlayer : NetworkBehaviour
         _resources += amount;
     }
 
+    [Server]
+    public void RemoveResources(int amount) {
+        _resources -= amount;
+    }
+
     [Command]
     public void CmdTryPlaceBuilding(int buildingId, Vector3 placeToBuild) {
         Building buildingToPlace = null;

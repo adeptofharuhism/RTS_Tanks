@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Unit : NetworkBehaviour
 {
+    [SerializeField] private int resourceCost = 10;
     [SerializeField] private Health health = null;
     [SerializeField] private UnitMovement unitMovement = null;
     [SerializeField] private Targeter targeter = null;
@@ -22,6 +23,7 @@ public class Unit : NetworkBehaviour
     public UnitMovement UnitMovement => unitMovement;
     public Targeter Targeter => targeter;
     public bool IsSelected => _isSelected;
+    public int ResourceCost => resourceCost;
 
     #region Server
     public override void OnStartServer() {
