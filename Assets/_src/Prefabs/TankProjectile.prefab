@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7387233823593858276}
   - component: {fileID: 1682312214765977406}
   - component: {fileID: 1831630355077211504}
+  - component: {fileID: 5070797908942230425}
   m_Layer: 11
   m_Name: TankProjectile
   m_TagString: Untagged
@@ -151,3 +152,19 @@ MonoBehaviour:
   damageToDeal: 25
   destroyAfterSeconds: 5
   launchForce: 10
+--- !u!114 &5070797908942230425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469461106847145786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5db204bafa9a43459cad6f55b9c799d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  colorRenderers:
+  - {fileID: 2731010898763643638}

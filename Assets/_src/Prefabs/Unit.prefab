@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 1555167913533391775}
   - component: {fileID: 3462946473811013601}
   - component: {fileID: 4664511194741472426}
+  - component: {fileID: 2901342761024907027}
   m_Layer: 12
   m_Name: Unit
   m_TagString: Untagged
@@ -78,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  resourceCost: 10
   health: {fileID: 3462946473811013601}
   unitMovement: {fileID: 3368466726057634182}
   targeter: {fileID: 1555167913533391775}
@@ -276,6 +278,22 @@ MonoBehaviour:
   health: {fileID: 3462946473811013601}
   healthBarParent: {fileID: 3769309141421117278}
   healthBarImage: {fileID: 3769309142999338836}
+--- !u!114 &2901342761024907027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103434367688489338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5db204bafa9a43459cad6f55b9c799d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  colorRenderers:
+  - {fileID: 2689609674396758441}
 --- !u!1 &1656249842461710131
 GameObject:
   m_ObjectHideFlags: 0
