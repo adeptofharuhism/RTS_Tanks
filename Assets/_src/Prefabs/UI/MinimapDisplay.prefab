@@ -297,5 +297,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimapRect: {fileID: 3796654030565048166}
-  mapScale: 15
-  offset: -6
+  mapScale: 50
+  offset: -8
