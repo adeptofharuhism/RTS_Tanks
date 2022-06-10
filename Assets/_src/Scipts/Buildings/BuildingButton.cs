@@ -14,13 +14,15 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     private Camera _mainCamera;
     private RTSPlayer _player;
-    private GameObject buildingPreviewInstance;
-    private Renderer buildingRendererInstance;
+    private GameObject _buildingPreviewInstance;
+    private Renderer _buildingRendererInstance;
+    private BoxCollider _buildingCollider;
 
     private void Start() {
         _mainCamera = Camera.main;
         iconImage.sprite = building.Icon;
         priceText.text = building.Price.ToString();
+        _buildingCollider = building.GetComponent<BoxCollider>();
     }
 
     private void Update() {
@@ -28,7 +30,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             _player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
         }
 
-        if (buildingPreviewInstance == null)
+        if (_buildingPreviewInstance == null)
             return;
 
         UpdateBuildingPreview();
@@ -38,13 +40,16 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (eventData.button != PointerEventData.InputButton.Left)
             return;
 
-        buildingPreviewInstance = Instantiate(building.BuildingPreview);
-        buildingPreviewInstance.SetActive(false);
-        buildingRendererInstance = buildingPreviewInstance.GetComponentInChildren<Renderer>();
+        if (_player.Resources < building.Price)
+            return;
+
+        _buildingPreviewInstance = Instantiate(building.BuildingPreview);
+        _buildingPreviewInstance.SetActive(false);
+        _buildingRendererInstance = _buildingPreviewInstance.GetComponentInChildren<Renderer>();
     }
 
     public void OnPointerUp(PointerEventData eventData) {
-        if (buildingPreviewInstance == null)
+        if (_buildingPreviewInstance == null)
             return;
 
         Ray ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -53,7 +58,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             _player.CmdTryPlaceBuilding(building.Id, hit.point);
         }
 
-        Destroy(buildingPreviewInstance);
+        Destroy(_buildingPreviewInstance);
     }
 
     private void UpdateBuildingPreview() {
@@ -62,9 +67,16 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, floorMask))
             return;
 
-        buildingPreviewInstance.transform.position = hit.point;
+        _buildingPreviewInstance.transform.position = hit.point;
 
-        if (!buildingPreviewInstance.activeSelf)
-            buildingPreviewInstance.SetActive(true);
+        if (!_buildingPreviewInstance.activeSelf)
+            _buildingPreviewInstance.SetActive(true);
+
+        Color color =
+            _player.CanPlaceBuilding(_buildingCollider, hit.point)
+            ? Color.green
+            : Color.red;
+
+        _buildingRendererInstance.material.SetColor("_Color", color);
     }
 }
