@@ -144,7 +144,7 @@ PrefabInstance:
     - target: {fileID: -2662986315630170174, guid: 647d8f56b17fd2f49b254be06b42236c, type: 3}
       propertyPath: building
       value: 
-      objectReference: {fileID: 5831893600709361288, guid: 65c32c75801517b4aa5054d0fb0802d3, type: 3}
+      objectReference: {fileID: 488980820823371985, guid: f42d2e117ecb334428b8c030b969cbaa, type: 3}
     - target: {fileID: 2948260249468355829, guid: 647d8f56b17fd2f49b254be06b42236c, type: 3}
       propertyPath: m_Pivot.x
       value: 1

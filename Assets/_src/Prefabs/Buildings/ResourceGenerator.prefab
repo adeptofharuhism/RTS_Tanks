@@ -193,7 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4408672537224704340, guid: 7e4c195658e209a4ba8d9c516ec6c69b, type: 3}
       propertyPath: maxHealth
-      value: 120
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 5803663447106486349, guid: 7e4c195658e209a4ba8d9c516ec6c69b, type: 3}
       propertyPath: aimAtPoint
@@ -221,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: a14e6ee680df42f4c99bf69bc3d6b9ca, type: 3}
     - target: {fileID: 7367207334056595275, guid: 7e4c195658e209a4ba8d9c516ec6c69b, type: 3}
       propertyPath: price
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7367207334056595275, guid: 7e4c195658e209a4ba8d9c516ec6c69b, type: 3}
       propertyPath: buildingPreview
