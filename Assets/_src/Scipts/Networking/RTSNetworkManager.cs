@@ -57,6 +57,8 @@ public class RTSNetworkManager : NetworkManager
 
         _playerList.Add(player);
 
+        player.SetDisplayName($"Gay {PlayerList.Count}");
+
         player.SetTeamColor(new Color(
             UnityEngine.Random.Range(0f, 1f),
             UnityEngine.Random.Range(0f, 1f),
