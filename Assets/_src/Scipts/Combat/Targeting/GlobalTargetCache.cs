@@ -24,8 +24,6 @@ public class GlobalTargetCache : NetworkBehaviour
     }
 
     private void ServerHandleOnTargetSpawned(Targetable target) {
-        print("New target appear");
-
         _allTargets.Add(target);
 
         ServerOnGlobalTargetAppeared?.Invoke(target);

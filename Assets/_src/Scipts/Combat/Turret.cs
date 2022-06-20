@@ -14,6 +14,9 @@ public class Turret : NetworkBehaviour
     private List<Targetable> _availableTargets = new List<Targetable>();
     private Targetable _currentTarget = null;
 
+    public Targetable CurrentTarget => _currentTarget;
+    public float AimingRange => _aimingRange;
+
     #region Server
     public override void OnStartServer() {
         GlobalTargetCache.ServerOnGlobalTargetAppeared += ServerHandleGlobalTargetAppeared;
@@ -32,23 +35,26 @@ public class Turret : NetworkBehaviour
         if (!CanAimAtCurrentTarget())
             FindNewTarget();
 
+        Quaternion targetRotation;
         if (_currentTarget == null)
-            return;
+            targetRotation = Quaternion.LookRotation(transform.forward);
+        else targetRotation = FindTurretRotationVector();
+                
 
-        AimTurretAtTarget();
+        AimTurretAtTarget(targetRotation);
     }
 
     [Server]
-    private bool CanAimAtCurrentTarget() {
-        return _currentTarget != null && InRangeWithTarget(_currentTarget);
-    }
+    private bool CanAimAtCurrentTarget() =>
+        _currentTarget != null && InRangeWithTarget(_currentTarget);
 
     [Server]
     private bool InRangeWithTarget(Targetable target) =>
-        (target.transform.position - _turretTransform.position).sqrMagnitude < (_aimingRange * _aimingRange);
+        (target.AimAtPoint.position - _turretTransform.position).sqrMagnitude < (_aimingRange * _aimingRange);
 
     [Server]
     private void FindNewTarget() {
+        _currentTarget = null;
         foreach(Targetable target in _availableTargets) {
             if (InRangeWithTarget(target)) {
                 _currentTarget = target;
@@ -58,12 +64,17 @@ public class Turret : NetworkBehaviour
     }
 
     [Server]
-    private void AimTurretAtTarget() {
-        Quaternion targetRotation =
-            Quaternion.LookRotation(_currentTarget.transform.position - _turretTransform.position);
+    private Quaternion FindTurretRotationVector() {
+        Vector3 targetPosition = _currentTarget.AimAtPoint.position;
+        targetPosition.y = _turretTransform.position.y;
 
+        return Quaternion.LookRotation(targetPosition - _turretTransform.position);
+    }
+
+    [Server]
+    private void AimTurretAtTarget(Quaternion rotation) {
         _turretTransform.rotation = 
-            Quaternion.RotateTowards(_turretTransform.rotation, targetRotation, _turretRotationSpeed * Time.deltaTime);
+            Quaternion.RotateTowards(_turretTransform.rotation, rotation, _turretRotationSpeed * Time.deltaTime);
     }
 
     [Server]
