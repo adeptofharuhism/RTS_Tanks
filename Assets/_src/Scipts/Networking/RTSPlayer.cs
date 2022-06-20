@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Mirror;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class RTSPlayer : NetworkBehaviour
 {

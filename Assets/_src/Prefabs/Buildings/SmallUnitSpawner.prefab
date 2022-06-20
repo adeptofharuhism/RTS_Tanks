@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 721746655057699669, guid: 65c32c75801517b4aa5054d0fb0802d3, type: 3}
       propertyPath: unitPrefab
       value: 
-      objectReference: {fileID: 1903911506090915845, guid: 7fd748cb2dae6b846b7980b4b8bd1419, type: 3}
+      objectReference: {fileID: 8516101950500399698, guid: de3f31ff493835943abf8d315a99030c, type: 3}
     - target: {fileID: 721746655057699669, guid: 65c32c75801517b4aa5054d0fb0802d3, type: 3}
       propertyPath: spawnMoveRange
       value: 3
