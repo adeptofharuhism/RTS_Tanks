@@ -84,37 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1787536878595326611
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6950245263704432084}
-  m_Layer: 0
-  m_Name: FireFromPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6950245263704432084
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1787536878595326611}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0040000677, z: 0.071}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7826635449162528803}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3021719183502040645
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +162,7 @@ GameObject:
   - component: {fileID: 729938710949671918}
   - component: {fileID: 750809431955399455}
   - component: {fileID: 8777960047644333511}
-  - component: {fileID: 4982798123875884221}
+  - component: {fileID: 5387697048523638984}
   - component: {fileID: 3196951817944707463}
   - component: {fileID: 6801726742259573263}
   - component: {fileID: 3768604519401177793}
@@ -348,7 +317,7 @@ MonoBehaviour:
   agent: {fileID: 3196951817944707463}
   targeter: {fileID: 4826652079620915166}
   chaseRange: 9.9
---- !u!114 &4982798123875884221
+--- !u!114 &5387697048523638984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,17 +326,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6358670572390286651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cb8bced2dce8e045a7eb06923ec2fc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c8907ddb0d12d44896811116bffa007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  targeter: {fileID: 4826652079620915166}
-  projectilePrefab: {fileID: 469461106847145786, guid: 856c5ca0c2a2bee48a428d7ad59348b1, type: 3}
-  projectileSpawnPoint: {fileID: 6950245263704432084}
-  fireRange: 10
-  fireRate: 2
-  rotationSpeed: 800
+  _minimapIcon: {fileID: 3494141836889418962}
 --- !u!195 &3196951817944707463
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -378,11 +340,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.91
-  m_Speed: 5
+  m_Speed: 4
   m_Acceleration: 3
   avoidancePriority: 50
   m_AngularSpeed: 260
-  m_StoppingDistance: 1.75
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -496,6 +458,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   _aimingRange: 10
+  _targeter: {fileID: 4826652079620915166}
   _turretTransform: {fileID: 2602005725125276578}
   _turretRotationSpeed: 95
 --- !u!114 &169697252534929457
@@ -550,7 +513,6 @@ MonoBehaviour:
   _cooldownTimeSeconds: 3.5
   _projectilePrefab: {fileID: 469461106847145786, guid: 856c5ca0c2a2bee48a428d7ad59348b1, type: 3}
   _gunTransform: {fileID: 7826635449162528803}
-  _turretTransform: {fileID: 2602005725125276578}
   _turret: {fileID: 2075270451733208907}
   _maxAngle: -25
   _minAngle: 10
@@ -651,7 +613,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6950245263704432084}
   - {fileID: 1828876405698506754}
   m_Father: {fileID: 2602005725125276578}
   m_RootOrder: 1
@@ -755,6 +716,11 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3010089373228378562, guid: 032ec7d4e097ddd45b6807911346f832, type: 3}
   m_PrefabInstance: {fileID: 137821482401519481}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3494141836889418962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3572494236662774699, guid: 032ec7d4e097ddd45b6807911346f832, type: 3}
+  m_PrefabInstance: {fileID: 137821482401519481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7907117838788670366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7805329896285332711, guid: 032ec7d4e097ddd45b6807911346f832, type: 3}
@@ -840,7 +806,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c42f9f737e28d9746bab9190ee75a3bf, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c42f9f737e28d9746bab9190ee75a3bf, type: 3}
       propertyPath: m_LocalPosition.x

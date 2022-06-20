@@ -29,7 +29,7 @@ public class UnitCommandGiver : MonoBehaviour
         if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
             return;
 
-        if (hit.collider.TryGetComponent<Targetable>(out Targetable target)) {
+        if (hit.collider.TryGetComponent(out Targetable target)) {
             if (target.hasAuthority) {
                 TryMove(hit.point);
             } else {

@@ -10,6 +10,8 @@ public class TeamColorSetter : NetworkBehaviour
     [SyncVar(hook=nameof(HandleTeamColorUpdated))]
     private Color _teamColor = new Color();
 
+    public Color TeamColor => _teamColor;
+
     #region Server
     public override void OnStartServer() {
         RTSPlayer player = connectionToClient.identity.GetComponent<RTSPlayer>();

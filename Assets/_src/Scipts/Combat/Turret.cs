@@ -1,5 +1,4 @@
 using Mirror;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +6,14 @@ public class Turret : NetworkBehaviour
 {
     [Header("Aiming")]
     [SerializeField] private float _aimingRange = 0f;
+    [SerializeField] private Targeter _targeter;
     [Header("Rotating turret")]
     [SerializeField] private Transform _turretTransform = null;
     [SerializeField] private float _turretRotationSpeed = 0f;
 
     private List<Targetable> _availableTargets = new List<Targetable>();
     private Targetable _currentTarget = null;
+    private Targetable _priorityTarget = null;
 
     public Targetable CurrentTarget => _currentTarget;
     public float AimingRange => _aimingRange;
@@ -32,14 +33,20 @@ public class Turret : NetworkBehaviour
 
     [ServerCallback]
     private void Update() {
-        if (!CanAimAtCurrentTarget())
-            FindNewTarget();
+        _priorityTarget = _targeter.Target;
+
+        if (_priorityTarget != null &&
+            InRangeWithTarget(_priorityTarget)) {
+            _currentTarget = _priorityTarget;
+        } else {
+            if (!CanAimAtCurrentTarget())
+                FindNewTarget();
+        }
 
         Quaternion targetRotation;
         if (_currentTarget == null)
             targetRotation = Quaternion.LookRotation(transform.forward);
         else targetRotation = FindTurretRotationVector();
-                
 
         AimTurretAtTarget(targetRotation);
     }

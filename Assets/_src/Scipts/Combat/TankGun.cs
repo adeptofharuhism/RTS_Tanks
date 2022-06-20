@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Mirror;
+using UnityEngine;
 
 public class TankGun : NetworkBehaviour
 {
@@ -10,7 +8,6 @@ public class TankGun : NetworkBehaviour
     [SerializeField] private GameObject _projectilePrefab = null;
     [Header("Aiming")]
     [SerializeField] private Transform _gunTransform = null;
-    [SerializeField] private Transform _turretTransform = null;
     [SerializeField] private Turret _turret = null;
     [SerializeField] private float _maxAngle = 10f;
     [SerializeField] private float _minAngle = 10f;

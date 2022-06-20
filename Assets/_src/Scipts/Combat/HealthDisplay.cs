@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,20 +7,16 @@ public class HealthDisplay : MonoBehaviour
     [SerializeField] private GameObject healthBarParent = null;
     [SerializeField] private Image healthBarImage = null;
 
-    private void Awake() {
+    private void OnEnable() {
         health.ClientOnHealthUpdated += HandleHealthUpdated;
     }
 
-    private void OnDestroy() {
-        health.ClientOnHealthUpdated -= HandleHealthUpdated;
-    }
-
-    private void OnMouseEnter() {
+    private void Start() {
         healthBarParent.SetActive(true);
     }
 
-    private void OnMouseExit() {
-        healthBarParent.SetActive(false);
+    private void OnDisable() {
+        health.ClientOnHealthUpdated -= HandleHealthUpdated;
     }
 
     private void HandleHealthUpdated(int currentHealth, int maxHealth) {
