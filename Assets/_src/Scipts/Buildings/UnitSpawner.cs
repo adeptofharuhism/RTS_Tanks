@@ -80,12 +80,12 @@ public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
 
         RTSPlayer player = connectionToClient.identity.GetComponent<RTSPlayer>();
 
-        if (player.Resources < unitPrefab.ResourceCost)
+        if (player.Resources < unitPrefab.Price)
             return;
 
         _queuedUnits++;
 
-        player.RemoveResources(unitPrefab.ResourceCost);
+        player.RemoveResources(unitPrefab.Price);
     }
     #endregion
 

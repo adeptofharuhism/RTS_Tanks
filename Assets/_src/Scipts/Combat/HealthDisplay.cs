@@ -19,7 +19,7 @@ public class HealthDisplay : MonoBehaviour
         health.ClientOnHealthUpdated -= HandleHealthUpdated;
     }
 
-    private void HandleHealthUpdated(int currentHealth, int maxHealth) {
-        healthBarImage.fillAmount = (float)currentHealth / maxHealth;
+    private void HandleHealthUpdated(float currentHealth, float maxHealth) {
+        healthBarImage.fillAmount = currentHealth / maxHealth;
     }
 }

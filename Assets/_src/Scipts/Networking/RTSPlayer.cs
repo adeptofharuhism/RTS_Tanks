@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class RTSPlayer : NetworkBehaviour
 {
-    [SerializeField] private Transform cameraTransform = null;
-    [SerializeField] private LayerMask buildingBlockLayer = new LayerMask();
-    [SerializeField] private Building[] buildings = new Building[0];
-    [SerializeField] private float buildingRangeLimit = 5f;
+    [Header("Common")]
+    [SerializeField] private Transform _cameraTransform = null;
+    [Header("Units spawn")]
+    [SerializeField] private float _spawnOffset = 3f;
+    [SerializeField] private Unit[] _units = new Unit[0];
+    [Header("Buildings spawn")]
+    [SerializeField] private LayerMask _buildingBlockLayer = new LayerMask();
+    [SerializeField] private Building[] _buildings = new Building[0];
+    [SerializeField] private float _buildingRangeLimit = 5f;
 
     public event Action<int> ClientOnResourcesUpdated;
 
@@ -22,29 +27,30 @@ public class RTSPlayer : NetworkBehaviour
     [SyncVar(hook = nameof(ClientHandleDisplayNameUpdated))]
     private string _displayName;
 
+    private Vector3 _unitSpawnPoint = Vector3.zero;
     private Color _teamColor = new Color();
-    private List<Unit> myUnits = new List<Unit>();
-    private List<Building> myBuildings = new List<Building>();
+    private List<Unit> _myUnits = new List<Unit>();
+    private List<Building> _myBuildings = new List<Building>();
 
     public int Resources => _resources;
     public bool IsPartyOwner => _isPartyOwner;
     public string DisplayName => _displayName;
     public Color TeamColor => _teamColor;
-    public List<Unit> MyUnits => myUnits;
-    public List<Building> MyBuildings => myBuildings;
-    public Transform CameraTransform => cameraTransform;
+    public List<Unit> MyUnits => _myUnits;
+    public List<Building> MyBuildings => _myBuildings;
+    public Transform CameraTransform => _cameraTransform;
 
     public bool CanPlaceBuilding(BoxCollider buildingCollider, Vector3 point) {
         if (Physics.CheckBox(
             point + buildingCollider.center,
             buildingCollider.size / 2,
             Quaternion.identity,
-            buildingBlockLayer))
+            _buildingBlockLayer))
             return false;
 
-        foreach (var building in myBuildings) {
+        foreach (var building in _myBuildings) {
             if ((point - building.transform.position).sqrMagnitude
-                <= buildingRangeLimit * buildingRangeLimit) {
+                <= _buildingRangeLimit * _buildingRangeLimit) {
                 return true;
             }
         }
@@ -58,6 +64,7 @@ public class RTSPlayer : NetworkBehaviour
         Unit.ServerOnUnitDespawned += ServerHandleUnitDespawned;
         Building.ServerOnBuildingSpawned += ServerHandleBuildingSpawned;
         Building.ServerOnBuildingDespawned += ServerHandleBuildingDespawned;
+        UnitBase.ServerOnBaseSpawned += ServerHandleBaseSpawned;
 
         DontDestroyOnLoad(gameObject);
     }
@@ -67,34 +74,47 @@ public class RTSPlayer : NetworkBehaviour
         Unit.ServerOnUnitDespawned -= ServerHandleUnitDespawned;
         Building.ServerOnBuildingSpawned -= ServerHandleBuildingSpawned;
         Building.ServerOnBuildingDespawned -= ServerHandleBuildingDespawned;
+        UnitBase.ServerOnBaseSpawned -= ServerHandleBaseSpawned;
     }
 
     private void ServerHandleUnitSpawned(Unit unit) {
         if (unit.connectionToClient.connectionId != connectionToClient.connectionId)
             return;
 
-        myUnits.Add(unit);
+        _myUnits.Add(unit);
     }
 
     private void ServerHandleUnitDespawned(Unit unit) {
         if (unit.connectionToClient.connectionId != connectionToClient.connectionId)
             return;
 
-        myUnits.Remove(unit);
+        _myUnits.Remove(unit);
     }
 
     private void ServerHandleBuildingSpawned(Building building) {
         if (building.connectionToClient.connectionId != connectionToClient.connectionId)
             return;
 
-        myBuildings.Add(building);
+        _myBuildings.Add(building);
     }
 
     private void ServerHandleBuildingDespawned(Building building) {
         if (building.connectionToClient.connectionId != connectionToClient.connectionId)
             return;
 
-        myBuildings.Remove(building);
+        _myBuildings.Remove(building);
+    }
+
+    private void ServerHandleBaseSpawned(UnitBase unitBase) {
+        if (unitBase.connectionToClient != connectionToClient)
+            return;
+
+        Vector3 unitBasePosition = unitBase.transform.position;
+        Vector3 spawnDirection = Vector3.zero - unitBasePosition;
+        spawnDirection.y = 0;
+
+        _unitSpawnPoint = unitBasePosition + (spawnDirection.normalized * _spawnOffset);
+        print($"Base position registered: {_unitSpawnPoint}");
     }
 
     [Server]
@@ -134,7 +154,7 @@ public class RTSPlayer : NetworkBehaviour
     public void CmdTryPlaceBuilding(int buildingId, Vector3 placeToBuild) {
         Building buildingToPlace = null;
 
-        foreach (var building in buildings) {
+        foreach (var building in _buildings) {
             if (building.Id == buildingId) {
                 buildingToPlace = building;
                 break;
@@ -158,6 +178,35 @@ public class RTSPlayer : NetworkBehaviour
         NetworkServer.Spawn(buildingInstance, connectionToClient);
 
         RemoveResources(buildingToPlace.Price);
+    }
+
+    [Command]
+    public void CmdTrySpawnUnit(int unitId) {
+        Unit unitToSpawn = null;
+
+        foreach (Unit unit in _units) {
+            if (unit.Id == unitId) {
+                unitToSpawn = unit;
+                break;
+            }
+        }
+
+        if (unitToSpawn == null)
+            return;
+
+        print($"Unit id is {unitToSpawn.Id}");
+
+        if (_resources < unitToSpawn.Price)
+            return;
+
+        print("Have enough resources");
+
+        GameObject unitInstance =
+            Instantiate(unitToSpawn.gameObject, _unitSpawnPoint, Quaternion.identity);
+
+        NetworkServer.Spawn(unitInstance, connectionToClient);
+
+        RemoveResources(unitToSpawn.Price);
     }
     #endregion
 
@@ -210,19 +259,19 @@ public class RTSPlayer : NetworkBehaviour
     }
 
     private void AuthorityHandleUnitSpawned(Unit unit) {
-        myUnits.Add(unit);
+        _myUnits.Add(unit);
     }
 
     private void AuthorityHandleUnitDespawned(Unit unit) {
-        myUnits.Remove(unit);
+        _myUnits.Remove(unit);
     }
 
     private void AuthorityHandleBuildingSpawned(Building building) {
-        myBuildings.Add(building);
+        _myBuildings.Add(building);
     }
 
     private void AuthorityHandleBuildingDespawned(Building building) {
-        myBuildings.Remove(building);
+        _myBuildings.Remove(building);
     }
 
     private void ClientHandleResourcesUpdated(int oldValue,int newValue) {

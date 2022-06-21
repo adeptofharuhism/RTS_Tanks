@@ -5,7 +5,6 @@ using Mirror;
 
 public class ResourceGenerator : NetworkBehaviour
 {
-    [SerializeField] private Health health = null;
     [SerializeField] private int resourcePerInterval = 10;
     [SerializeField] private float interval = 2f;
 
@@ -16,12 +15,10 @@ public class ResourceGenerator : NetworkBehaviour
         _timer = interval;
         _player = connectionToClient.identity.GetComponent<RTSPlayer>();
 
-        health.ServerOnDie += ServerHandleDie;
         GameOverHandler.ServerOnGameOver += ServerHandleGameOver;
     }
 
     public override void OnStopServer() {
-        health.ServerOnDie -= ServerHandleDie;
         GameOverHandler.ServerOnGameOver -= ServerHandleGameOver;
     }
 
@@ -33,10 +30,6 @@ public class ResourceGenerator : NetworkBehaviour
             _player.AddResources(resourcePerInterval);
             _timer += interval;
         }
-    }
-
-    private void ServerHandleDie() {
-        NetworkServer.Destroy(gameObject);
     }
 
     private void ServerHandleGameOver() {

@@ -3260,10 +3260,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8141965927708195914, guid: dd6bba1e326233e4ba6424ea84ce0b8c, type: 3}
-      propertyPath: spawnPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 2628595421490777206, guid: de3f31ff493835943abf8d315a99030c, type: 3}
     - target: {fileID: 8141965927708195918, guid: dd6bba1e326233e4ba6424ea84ce0b8c, type: 3}
       propertyPath: m_Name
       value: NetworkManager

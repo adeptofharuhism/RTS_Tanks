@@ -266,7 +266,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  resourceCost: 200
+  _price: 200
+  _unitId: 2
+  _unitIcon: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
   health: {fileID: 7449092306159293344}
   unitMovement: {fileID: 8777960047644333511}
   targeter: {fileID: 4826652079620915166}
@@ -341,10 +343,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.91
   m_Speed: 5.7
-  m_Acceleration: 1.6
+  m_Acceleration: 3
   avoidancePriority: 50
-  m_AngularSpeed: 140
-  m_StoppingDistance: 1
+  m_AngularSpeed: 250
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -408,7 +410,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  maxHealth: 1700
+  _maxHealth: 1700
+  _armor: 8
 --- !u!114 &1717290600676442347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _cooldownTimeSeconds: 3.5
+  _cooldownTimeSeconds: 5.65
   _projectilePrefab: {fileID: 469461106847145786, guid: 856c5ca0c2a2bee48a428d7ad59348b1, type: 3}
   _gunTransform: {fileID: 7826635449162528803}
   _turret: {fileID: 2075270451733208907}

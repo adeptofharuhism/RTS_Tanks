@@ -110,14 +110,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  cameraTransform: {fileID: 4724849306883534740}
-  buildingBlockLayer:
+  _cameraTransform: {fileID: 4724849306883534740}
+  _spawnOffset: 3
+  _units:
+  - {fileID: 1186180385901039743, guid: 7187973a94dc0be41aaaf7a8f3e40c06, type: 3}
+  - {fileID: 750809431955399455, guid: de3f31ff493835943abf8d315a99030c, type: 3}
+  _buildingBlockLayer:
     serializedVersion: 2
-    m_Bits: 5121
-  buildings:
-  - {fileID: 488980820823371985, guid: f42d2e117ecb334428b8c030b969cbaa, type: 3}
+    m_Bits: 0
+  _buildings:
   - {fileID: 5831893600709361288, guid: e3b6443910a45f748bcff10338e4d5cd, type: 3}
-  buildingRangeLimit: 5
+  - {fileID: 488980820823371985, guid: f42d2e117ecb334428b8c030b969cbaa, type: 3}
+  _buildingRangeLimit: 5
 --- !u!114 &8800097377610969829
 MonoBehaviour:
   m_ObjectHideFlags: 0

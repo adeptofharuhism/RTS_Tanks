@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class Health : NetworkBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+    private const float DAMAGE_MODIFIER_PER_ARMOR_UNIT = 0.05f;
+
+    [SerializeField] private float _maxHealth = 100f;
+    [SerializeField] private int _armor = 0;
 
     public event Action ServerOnDie;
 
-    public event Action<int, int> ClientOnHealthUpdated;
+    public event Action<float, float> ClientOnHealthUpdated;
 
     [SyncVar(hook = nameof(HandleHealthUpdated))]
-    private int _currentHealth;
+    private float _currentHealth;
 
     #region Server
     public override void OnStartServer() {
-        _currentHealth = maxHealth;
+        _currentHealth = _maxHealth;
 
         UnitBase.ServerOnPlayerDie += ServerHandlePlayerDie;
     }
@@ -24,11 +27,17 @@ public class Health : NetworkBehaviour
         UnitBase.ServerOnPlayerDie -= ServerHandlePlayerDie;
     }
 
-    public void DealDamage(int damageAmount) {
+    public void DealDamage(float damageAmount, int penetration, bool useArmor = false) {
         if (_currentHealth == 0)
             return;
 
-        _currentHealth = Mathf.Max(_currentHealth - damageAmount, 0);
+        float damageMultiplier = 1;
+        if (useArmor) {
+            damageMultiplier = damageMultiplier + (penetration - _armor) * DAMAGE_MODIFIER_PER_ARMOR_UNIT;
+            damageMultiplier = Mathf.Clamp(damageMultiplier, 0, Mathf.Infinity);
+        }
+
+        _currentHealth = Mathf.Max(_currentHealth - damageAmount * damageMultiplier, 0);
 
         if (_currentHealth != 0)
             return;
@@ -41,13 +50,13 @@ public class Health : NetworkBehaviour
         if (connectionToClient.connectionId != connectionId)
             return;
 
-        DealDamage(_currentHealth);
+        DealDamage(_currentHealth * 2, 0, false);
     }
     #endregion
 
     #region Client
-    private void HandleHealthUpdated(int oldHealth, int newHealth) {
-        ClientOnHealthUpdated?.Invoke(newHealth, maxHealth);
+    private void HandleHealthUpdated(float oldHealth, float newHealth) {
+        ClientOnHealthUpdated?.Invoke(newHealth, _maxHealth);
     }
     #endregion
 }

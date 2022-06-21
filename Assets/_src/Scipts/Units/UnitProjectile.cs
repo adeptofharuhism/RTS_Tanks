@@ -5,6 +5,7 @@ public class UnitProjectile : NetworkBehaviour
 {
     [SerializeField] private Rigidbody rb = null;
     [SerializeField] private int damageToDeal = 20;
+    [SerializeField] private int _penetration = 0;
     [SerializeField] private float destroyAfterSeconds = 5;
     [SerializeField] private float launchForce = 10f;
 
@@ -24,7 +25,7 @@ public class UnitProjectile : NetworkBehaviour
         }
 
         if (other.TryGetComponent(out Health health)) {
-            health.DealDamage(damageToDeal);
+            health.DealDamage(damageToDeal, _penetration);
         }
 
         DestroySelf();
