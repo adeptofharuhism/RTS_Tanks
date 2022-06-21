@@ -22,11 +22,9 @@ public class UnitBuyButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandl
     }
 
     public void OnPointerUp(PointerEventData eventData) {
-        print("Button clicked");
         if (_player.Resources < _unit.Price)
             return;
 
-        print("Sending command");
         _player.CmdTrySpawnUnit(_unit.Id);
     }
 

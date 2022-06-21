@@ -23,6 +23,9 @@ public class ProjectileTrail : MonoBehaviour
     }
 
     private void Update() {
+        if (_trailTransform == null)
+            return;
+
         _trailTransform.position = transform.position;
     }
 }

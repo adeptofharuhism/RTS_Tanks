@@ -144,16 +144,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2465110252890415562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0658b34e0a430624182c9fe670093e02, type: 3}
+  m_Script: {fileID: 11500000, guid: 19e3f7facbd53a54fa4a5bb77ac0eaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
   rb: {fileID: 4770071564158286356}
-  damageToDeal: 4
+  damageToDeal: 8
   _penetration: 1
-  destroyAfterSeconds: 1.25
-  launchForce: 10
+  destroyAfterSeconds: 1
+  launchForce: 12
 --- !u!114 &7127261976803356009
 MonoBehaviour:
   m_ObjectHideFlags: 0

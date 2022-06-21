@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class UnitProjectile : NetworkBehaviour
 {
-    [SerializeField] private Rigidbody rb = null;
-    [SerializeField] private int damageToDeal = 20;
-    [SerializeField] private int _penetration = 0;
+    [SerializeField] protected Rigidbody rb = null;
+    [SerializeField] protected int damageToDeal = 20;
+    [SerializeField] protected int _penetration = 0;
     [SerializeField] private float destroyAfterSeconds = 5;
-    [SerializeField] private float launchForce = 10f;
+    [SerializeField] protected float launchForce = 10f;
 
     private void Start() {
         rb.velocity = transform.forward * launchForce;
@@ -32,7 +32,7 @@ public class UnitProjectile : NetworkBehaviour
     }
 
     [Server]
-    private void DestroySelf() {
+    protected void DestroySelf() {
         NetworkServer.Destroy(gameObject);
     }
 }

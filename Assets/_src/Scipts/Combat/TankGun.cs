@@ -5,10 +5,10 @@ public class TankGun : NetworkBehaviour
 {
     [Header("Firing")]
     [SerializeField] private float _cooldownTimeSeconds = 1f;
-    [SerializeField] private GameObject _projectilePrefab = null;
+    [SerializeField] protected GameObject _projectilePrefab = null;
     [Header("Aiming")]
-    [SerializeField] private Transform _gunTransform = null;
-    [SerializeField] private Turret _turret = null;
+    [SerializeField] protected Transform _gunTransform = null;
+    [SerializeField] protected Turret _turret = null;
     [SerializeField] private float _maxAngle = 10f;
     [SerializeField] private float _minAngle = 10f;
     [SerializeField] private LayerMask _layerMask = new LayerMask();
@@ -47,6 +47,7 @@ public class TankGun : NetworkBehaviour
 
                 if (identity.connectionToClient != connectionToClient) {
                     Fire();
+                    GoOnCooldown();
                 }
             }
         }
@@ -77,12 +78,15 @@ public class TankGun : NetworkBehaviour
     }
 
     [Server]
-    private void Fire() {
+    protected virtual void Fire() {
         GameObject projectileInstance = 
             Instantiate(_projectilePrefab, _gunTransform.position, _gunTransform.rotation);
 
         NetworkServer.Spawn(projectileInstance, connectionToClient);
+    }
 
+    [Server]
+    private void GoOnCooldown() {
         _readyToFire = false;
         _cooldownTimeRemaining += _cooldownTimeSeconds;
     }

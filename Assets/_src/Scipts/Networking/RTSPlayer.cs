@@ -114,7 +114,6 @@ public class RTSPlayer : NetworkBehaviour
         spawnDirection.y = 0;
 
         _unitSpawnPoint = unitBasePosition + (spawnDirection.normalized * _spawnOffset);
-        print($"Base position registered: {_unitSpawnPoint}");
     }
 
     [Server]
@@ -194,12 +193,8 @@ public class RTSPlayer : NetworkBehaviour
         if (unitToSpawn == null)
             return;
 
-        print($"Unit id is {unitToSpawn.Id}");
-
         if (_resources < unitToSpawn.Price)
             return;
-
-        print("Have enough resources");
 
         GameObject unitInstance =
             Instantiate(unitToSpawn.gameObject, _unitSpawnPoint, Quaternion.identity);
