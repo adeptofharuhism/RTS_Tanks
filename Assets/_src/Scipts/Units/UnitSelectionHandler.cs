@@ -1,8 +1,8 @@
-using System.Collections;
+using Mirror;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Mirror;
+using UnityEngine.EventSystems;
 
 public class UnitSelectionHandler : MonoBehaviour
 {
@@ -12,6 +12,9 @@ public class UnitSelectionHandler : MonoBehaviour
     private RTSPlayer _player;
     private Camera _mainCamera;
     private Vector2 _startPosition;
+
+    private int _unitSelectorBlockedTimes = 0;
+    private bool _startedSelection = false;
 
     public List<Unit> SelectedUnits { get; } = new List<Unit>();
 
@@ -23,24 +26,30 @@ public class UnitSelectionHandler : MonoBehaviour
     private void OnEnable() {
         Unit.AuthorityOnUnitDespawned += AuthorityHandleUnitDespawned;
         GameOverHandler.ClientOnGameOver += ClientHandleGameOver;
+        UnitSelectionBlocker.OnUnitSelectionBlocked += ClientHandleOnUnitSelectionBlocked;
+        UnitSelectionBlocker.OnUnitSelectionAllowed += ClientHandleOnUnitSelectionAllowed;
     }
 
     private void OnDisable() {
         Unit.AuthorityOnUnitDespawned -= AuthorityHandleUnitDespawned;
         GameOverHandler.ClientOnGameOver -= ClientHandleGameOver;
+        UnitSelectionBlocker.OnUnitSelectionBlocked -= ClientHandleOnUnitSelectionBlocked;
+        UnitSelectionBlocker.OnUnitSelectionAllowed -= ClientHandleOnUnitSelectionAllowed;
     }
 
     private void Update() {
-        if (Mouse.current.leftButton.wasPressedThisFrame) {
+        if ((_unitSelectorBlockedTimes == 0) && Mouse.current.leftButton.wasPressedThisFrame) {
             StartSelectionArea();
-        } else if (Mouse.current.leftButton.isPressed) {
+        } else if (_startedSelection && Mouse.current.leftButton.isPressed) {
             UpdateSelectionArea();
-        } else if (Mouse.current.leftButton.wasReleasedThisFrame) {
+        } else if (_startedSelection && Mouse.current.leftButton.wasReleasedThisFrame) {
             ClearSelectionArea();
         }
     }
 
     private void StartSelectionArea() {
+        _startedSelection = true;
+
         if (!Keyboard.current.leftShiftKey.isPressed) {
             foreach (Unit selectedUnit in SelectedUnits) {
                 selectedUnit.Deselect();
@@ -68,6 +77,8 @@ public class UnitSelectionHandler : MonoBehaviour
     private void ClearSelectionArea() {
         unitSelectionArea.gameObject.SetActive(false);
 
+        _startedSelection = false;
+
         if (unitSelectionArea.sizeDelta.magnitude == 0) {
             SingleUnitSelection();
         } else {
@@ -81,7 +92,7 @@ public class UnitSelectionHandler : MonoBehaviour
         if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
             return;
 
-        if (!hit.collider.TryGetComponent<Unit>(out Unit unit))
+        if (!hit.collider.TryGetComponent(out Unit unit))
             return;
 
         if (!unit.hasAuthority)
@@ -117,5 +128,13 @@ public class UnitSelectionHandler : MonoBehaviour
 
     private void ClientHandleGameOver(string winnerName) {
         enabled = false;
+    }
+
+    private void ClientHandleOnUnitSelectionBlocked() {
+        _unitSelectorBlockedTimes++;
+    }
+
+    private void ClientHandleOnUnitSelectionAllowed() {
+        _unitSelectorBlockedTimes--;
     }
 }

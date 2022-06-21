@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &469461106847145786
+--- !u!1 &2465110252890415562
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 405682033547234845}
-  - component: {fileID: 7327344568534692624}
-  - component: {fileID: 2731010898763643638}
-  - component: {fileID: 8690685881098634675}
-  - component: {fileID: 7387233823593858276}
-  - component: {fileID: 1682312214765977406}
-  - component: {fileID: 1831630355077211504}
-  - component: {fileID: 5070797908942230425}
-  - component: {fileID: 939153716308528551}
+  - component: {fileID: 2384459729324732653}
+  - component: {fileID: 4691059510988328416}
+  - component: {fileID: 94706589017981958}
+  - component: {fileID: 6642119051754322755}
+  - component: {fileID: 4770071564158286356}
+  - component: {fileID: 3742155796434485710}
+  - component: {fileID: 4457801463195474816}
+  - component: {fileID: 7127261976803356009}
+  - component: {fileID: 3007986192089510743}
   m_Layer: 11
-  m_Name: MarauderProjectile
+  m_Name: LynxProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &405682033547234845
+--- !u!4 &2384459729324732653
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469461106847145786}
+  m_GameObject: {fileID: 2465110252890415562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7327344568534692624
+--- !u!33 &4691059510988328416
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469461106847145786}
+  m_GameObject: {fileID: 2465110252890415562}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2731010898763643638
+--- !u!23 &94706589017981958
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469461106847145786}
+  m_GameObject: {fileID: 2465110252890415562}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -89,26 +89,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8690685881098634675
+--- !u!135 &6642119051754322755
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469461106847145786}
+  m_GameObject: {fileID: 2465110252890415562}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &7387233823593858276
+--- !u!54 &4770071564158286356
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469461106847145786}
+  m_GameObject: {fileID: 2465110252890415562}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -118,13 +118,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &1682312214765977406
+--- !u!114 &3742155796434485710
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469461106847145786}
+  m_GameObject: {fileID: 2465110252890415562}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
@@ -133,15 +133,15 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   visible: 0
-  m_AssetId: 856c5ca0c2a2bee48a428d7ad59348b1
+  m_AssetId: dc68e7724215062428c8ed3b8157d720
   hasSpawned: 0
---- !u!114 &1831630355077211504
+--- !u!114 &4457801463195474816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469461106847145786}
+  m_GameObject: {fileID: 2465110252890415562}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0658b34e0a430624182c9fe670093e02, type: 3}
@@ -149,17 +149,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  rb: {fileID: 7387233823593858276}
-  damageToDeal: 120
-  destroyAfterSeconds: 1.6
-  launchForce: 14
---- !u!114 &5070797908942230425
+  rb: {fileID: 4770071564158286356}
+  damageToDeal: 4
+  destroyAfterSeconds: 1.25
+  launchForce: 10
+--- !u!114 &7127261976803356009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469461106847145786}
+  m_GameObject: {fileID: 2465110252890415562}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5db204bafa9a43459cad6f55b9c799d, type: 3}
@@ -168,18 +168,18 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   colorRenderers:
-  - {fileID: 2731010898763643638}
---- !u!114 &939153716308528551
+  - {fileID: 94706589017981958}
+--- !u!114 &3007986192089510743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469461106847145786}
+  m_GameObject: {fileID: 2465110252890415562}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c52062549b5d0db4b81348f7bf01e245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _trailPrefab: {fileID: 1216567070312929546, guid: 72131ddd9c1479946aa5aae3f50c375b, type: 3}
-  _teamColorSetter: {fileID: 5070797908942230425}
+  _teamColorSetter: {fileID: 7127261976803356009}

@@ -152,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4408672537224704340, guid: 7e4c195658e209a4ba8d9c516ec6c69b, type: 3}
       propertyPath: maxHealth
-      value: 200
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 5803663447106486349, guid: 7e4c195658e209a4ba8d9c516ec6c69b, type: 3}
       propertyPath: aimAtPoint
