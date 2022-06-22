@@ -780,6 +780,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 84d76b6cca146a247a91a7dd69ec906e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e3b435a4dd028414ab2e6f3ad06f1706, type: 2}
     - target: {fileID: 919132149155446097, guid: 84d76b6cca146a247a91a7dd69ec906e, type: 3}
       propertyPath: m_Name
       value: LynxBase
@@ -847,6 +851,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9c24c9955f577994aa0b05d0831e2f6e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e3b435a4dd028414ab2e6f3ad06f1706, type: 2}
     - target: {fileID: 919132149155446097, guid: 9c24c9955f577994aa0b05d0831e2f6e, type: 3}
       propertyPath: m_Name
       value: LynxTurret
@@ -875,16 +883,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302c47932d4f2874d94328476e784f2e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.41
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 302c47932d4f2874d94328476e784f2e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.41
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 302c47932d4f2874d94328476e784f2e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.41
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 302c47932d4f2874d94328476e784f2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302c47932d4f2874d94328476e784f2e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0276
+      value: 0.043
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302c47932d4f2874d94328476e784f2e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.028
+      value: -0.068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302c47932d4f2874d94328476e784f2e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -914,6 +934,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 302c47932d4f2874d94328476e784f2e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 302c47932d4f2874d94328476e784f2e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e3b435a4dd028414ab2e6f3ad06f1706, type: 2}
     - target: {fileID: 919132149155446097, guid: 302c47932d4f2874d94328476e784f2e, type: 3}
       propertyPath: m_Name
       value: LynxGun

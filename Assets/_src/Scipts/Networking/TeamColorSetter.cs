@@ -23,7 +23,7 @@ public class TeamColorSetter : NetworkBehaviour
     #region Client
     private void HandleTeamColorUpdated(Color oldColor, Color newColor) {
         foreach(var renderer in colorRenderers) {
-            renderer.material.SetColor("_Color", newColor);
+            renderer.material.SetColor("_GlowColor", newColor*2);
         }
     }
     #endregion
