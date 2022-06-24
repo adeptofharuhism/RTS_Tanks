@@ -74,6 +74,11 @@ MonoBehaviour:
   - {fileID: 7558604125844680656, guid: e48d7acda00c28f4588f488334534bb4, type: 3}
   unitBasePrefab: {fileID: 6433017320154815411, guid: 790d0f2529b2f794eb2d2bc991628a78, type: 3}
   gameOverHandlerPrefab: {fileID: 4799931309595966151, guid: e48d7acda00c28f4588f488334534bb4, type: 3}
+  _teamColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 1, b: 0, a: 1}
 --- !u!114 &8141965927708195913
 MonoBehaviour:
   m_ObjectHideFlags: 0

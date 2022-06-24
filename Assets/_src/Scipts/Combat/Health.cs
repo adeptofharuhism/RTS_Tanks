@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : NetworkBehaviour
 {
-    private const float DAMAGE_MODIFIER_PER_ARMOR_UNIT = 0.05f;
+    private const float DAMAGE_MODIFIER_PER_ARMOR_UNIT = 0.06f;
 
     [SerializeField] private float _maxHealth = 100f;
     [SerializeField] private int _armor = 0;

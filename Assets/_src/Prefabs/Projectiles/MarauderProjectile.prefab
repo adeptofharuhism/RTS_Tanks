@@ -152,8 +152,8 @@ MonoBehaviour:
   rb: {fileID: 7387233823593858276}
   damageToDeal: 400
   _penetration: 4
-  destroyAfterSeconds: 1.42
-  launchForce: 17
+  destroyAfterSeconds: 1.1
+  launchForce: 22
 --- !u!114 &5070797908942230425
 MonoBehaviour:
   m_ObjectHideFlags: 0

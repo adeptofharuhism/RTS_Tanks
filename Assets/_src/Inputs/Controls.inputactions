@@ -13,6 +13,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "CameraUp",
+                    "type": "Button",
+                    "id": "8f89b509-716e-4605-86b5-93af13e8106b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CameraDown",
+                    "type": "Button",
+                    "id": "112af5d7-6032-4231-a91e-e8043d51884a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CameraMouseChangeHeight",
+                    "type": "Value",
+                    "id": "16399d08-00d0-4c85-9288-6d79d3972228",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -125,6 +152,39 @@
                     "action": "MoveCamera",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e3a87937-499f-4a10-97ee-2ea8d65b433a",
+                    "path": "<Keyboard>/numpadMinus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bad7ea9e-8457-4223-aaa8-f29d80ffa00b",
+                    "path": "<Keyboard>/numpadPlus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a046834-a061-448a-97f0-88d736eeaa47",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraMouseChangeHeight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

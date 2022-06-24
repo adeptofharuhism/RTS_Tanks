@@ -9,6 +9,7 @@ public class RTSNetworkManager : NetworkManager
     [Header("RTS Preferences")]
     [SerializeField] private GameObject unitBasePrefab = null;
     [SerializeField] private GameOverHandler gameOverHandlerPrefab = null;
+    [SerializeField] private Color[] _teamColors = new Color[0];
 
     public static event Action ClientOnConnected;
     public static event Action ClientOnDisconnected;
@@ -59,10 +60,7 @@ public class RTSNetworkManager : NetworkManager
 
         player.SetDisplayName($"Gay {PlayerList.Count}");
 
-        player.SetTeamColor(new Color(
-            UnityEngine.Random.Range(0f, 1f),
-            UnityEngine.Random.Range(0f, 1f),
-            UnityEngine.Random.Range(0f, 1f)));
+        player.SetTeamColor(_teamColors[(PlayerList.Count - 1) % 4]);
 
         player.SetState(PlayerList.Count == 1);
     }
