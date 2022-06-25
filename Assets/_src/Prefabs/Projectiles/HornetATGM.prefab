@@ -188,7 +188,7 @@ MonoBehaviour:
   _penetration: 10
   destroyAfterSeconds: 16
   launchForce: 10
-  _turnSpeed: 300
+  _turnSpeed: 30
   _health: {fileID: 5787178993905847167}
 --- !u!114 &5250133927799940350
 MonoBehaviour:
@@ -237,6 +237,7 @@ MonoBehaviour:
   syncInterval: 0.1
   colorRenderers:
   - {fileID: 6115331115003688901}
+  _light: {fileID: 0}
 --- !u!114 &6115331115003688536
 MonoBehaviour:
   m_ObjectHideFlags: 0

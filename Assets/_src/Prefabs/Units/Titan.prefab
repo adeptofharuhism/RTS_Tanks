@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 7841171160603881923}
   - component: {fileID: 7841171160603881772}
   - component: {fileID: 7841171160603881736}
+  - component: {fileID: 4219089585448516507}
   m_Layer: 12
   m_Name: Titan
   m_TagString: Untagged
@@ -590,6 +591,20 @@ MonoBehaviour:
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   target: {fileID: 7841171160603881537}
+--- !u!114 &4219089585448516507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7841171160603881698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf03ceb1d8640d4db37af9f6b107723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!1 &7841171160603881722
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1435813577154675869, guid: 6f157a398634d82439c44030e1197b37, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f157a398634d82439c44030e1197b37, type: 3}

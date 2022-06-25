@@ -70,9 +70,10 @@ MonoBehaviour:
   - {fileID: 7712130394901636059, guid: 1c310610ce13b814fb3440c88ae7b8f2, type: 3}
   - {fileID: 449094753351239863, guid: 520e6bc6185917f469f424c8c5afc276, type: 3}
   - {fileID: 6115331115003688742, guid: ba5e2677dc5944e41b78891cf5e29702, type: 3}
-  - {fileID: 6433017320154815411, guid: 790d0f2529b2f794eb2d2bc991628a78, type: 3}
+  - {fileID: 1081457020598112923, guid: 6da94171afc5bf743892f2646c9b5d4d, type: 3}
+  - {fileID: 6734640365618459300, guid: 461b7ae3f2f583c4eabfaff2d099a260, type: 3}
   - {fileID: 7558604125844680656, guid: e48d7acda00c28f4588f488334534bb4, type: 3}
-  unitBasePrefab: {fileID: 6433017320154815411, guid: 790d0f2529b2f794eb2d2bc991628a78, type: 3}
+  unitBasePrefab: {fileID: 1081457020598112923, guid: 6da94171afc5bf743892f2646c9b5d4d, type: 3}
   gameOverHandlerPrefab: {fileID: 4799931309595966151, guid: e48d7acda00c28f4588f488334534bb4, type: 3}
   _teamColors:
   - {r: 1, g: 0, b: 0, a: 1}

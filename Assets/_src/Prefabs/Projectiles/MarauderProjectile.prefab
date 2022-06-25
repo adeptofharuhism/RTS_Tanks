@@ -170,6 +170,7 @@ MonoBehaviour:
   syncInterval: 0.1
   colorRenderers:
   - {fileID: 2731010898763643638}
+  _light: {fileID: 0}
 --- !u!114 &939153716308528551
 MonoBehaviour:
   m_ObjectHideFlags: 0
