@@ -21,9 +21,11 @@ public class CameraController : NetworkBehaviour
     private Controls _controls;
 
     public override void OnStartAuthority() {
+        CameraInitialPoint.OnInitialPointReady += SetCameraPosition;
+
         playerCameraTransform.gameObject.SetActive(true);
 
-        _currentHeight = minHeight;
+        _currentHeight = maxHeight;
         UpdateCameraAngle();
 
         _controls = new Controls();
@@ -38,6 +40,8 @@ public class CameraController : NetworkBehaviour
     }
 
     public override void OnStopAuthority() {
+        CameraInitialPoint.OnInitialPointReady -= SetCameraPosition;
+
         _controls.Disable();
 
         _controls.Player.MoveCamera.performed -= SetPreviousInput;
@@ -130,19 +134,10 @@ public class CameraController : NetworkBehaviour
         playerCameraTransform.LookAt(lookAtPosition);
     }
 
-    private void OnDrawGizmosSelected() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(
-            new Vector3(screenXLimits.x, 0, screenZLimits.x), 
-            new Vector3(screenXLimits.x, 0, screenZLimits.y));
-        Gizmos.DrawLine(
-            new Vector3(screenXLimits.x, 0, screenZLimits.y),
-            new Vector3(screenXLimits.y, 0, screenZLimits.y));
-        Gizmos.DrawLine(
-            new Vector3(screenXLimits.y, 0, screenZLimits.y),
-            new Vector3(screenXLimits.y, 0, screenZLimits.x));
-        Gizmos.DrawLine(
-            new Vector3(screenXLimits.y, 0, screenZLimits.x),
-            new Vector3(screenXLimits.x, 0, screenZLimits.x));
+    private void SetCameraPosition(Vector3 position) {
+        playerCameraTransform.position = new Vector3(
+            position.x, 
+            playerCameraTransform.position.y, 
+            position.z - lookPointOffset);
     }
 }
