@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class RTSPlayer : NetworkBehaviour
 {
+    private const int DEFAULT_RESOURCES = 100;
+    public const int MAX_UNITS_DEFAULT = 8;
+
     [Header("Common")]
     [SerializeField] private Transform _cameraTransform = null;
     [Header("Units spawn")]
@@ -16,16 +19,23 @@ public class RTSPlayer : NetworkBehaviour
     [SerializeField] private float _buildingRangeLimit = 5f;
 
     public event Action<int> ClientOnResourcesUpdated;
+    public event Action<int> ClientOnUnitAmountUpdated;
+    public event Action<int> ClientOnUnitMaxAmountUpdated;
 
     public static event Action<bool> AuthorityOnPartyOwnerStateUpdated;
     public static event Action ClientOnInfoUpdated;
 
     [SyncVar(hook = nameof(ClientHandleResourcesUpdated))]
-    private int _resources = 500;
+    private int _resources = DEFAULT_RESOURCES;
     [SyncVar(hook = nameof(AuthorityHandlePartyOwnerStateUpdated))]
     private bool _isPartyOwner = false;
     [SyncVar(hook = nameof(ClientHandleDisplayNameUpdated))]
     private string _displayName;
+
+    [SyncVar(hook = nameof(ClientHandleUnitMaxAmountUpdated))]
+    private int _currentMaxUnits = MAX_UNITS_DEFAULT;
+    [SyncVar(hook = nameof(ClientHandleUnitAmountUpdated))]
+    private int _currentUnits = 0;
 
     private Vector3 _unitSpawnPoint = Vector3.zero;
     private Color _teamColor = new Color();
@@ -81,6 +91,7 @@ public class RTSPlayer : NetworkBehaviour
         if (unit.connectionToClient.connectionId != connectionToClient.connectionId)
             return;
 
+        _currentUnits++;
         _myUnits.Add(unit);
     }
 
@@ -88,6 +99,7 @@ public class RTSPlayer : NetworkBehaviour
         if (unit.connectionToClient.connectionId != connectionToClient.connectionId)
             return;
 
+        _currentUnits--;
         _myUnits.Remove(unit);
     }
 
@@ -114,6 +126,16 @@ public class RTSPlayer : NetworkBehaviour
         spawnDirection.y = 0;
 
         _unitSpawnPoint = unitBasePosition + (spawnDirection.normalized * _spawnOffset);
+    }
+
+    [Server]
+    public void AddMaxUnits(int amount) {
+        _currentMaxUnits += amount;
+    }
+
+    [Server]
+    public void RemoveMaxUnits(int amount) {
+        _currentMaxUnits -= amount;
     }
 
     [Server]
@@ -181,6 +203,9 @@ public class RTSPlayer : NetworkBehaviour
 
     [Command]
     public void CmdTrySpawnUnit(int unitId) {
+        if (_currentMaxUnits <= _currentUnits)
+            return;
+
         Unit unitToSpawn = null;
 
         foreach (Unit unit in _units) {
@@ -271,6 +296,14 @@ public class RTSPlayer : NetworkBehaviour
 
     private void ClientHandleResourcesUpdated(int oldValue,int newValue) {
         ClientOnResourcesUpdated?.Invoke(newValue);
+    }
+
+    private void ClientHandleUnitAmountUpdated(int oldValue, int newValue) {
+        ClientOnUnitAmountUpdated?.Invoke(newValue);
+    }
+
+    private void ClientHandleUnitMaxAmountUpdated(int oldValue, int newValue) {
+        ClientOnUnitMaxAmountUpdated?.Invoke(newValue);
     }
     #endregion
 }

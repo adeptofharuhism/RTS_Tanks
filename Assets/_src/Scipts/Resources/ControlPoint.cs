@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ControlPoint : NetworkBehaviour
 {
+    [SerializeField] private int _unitsOnConquered = 1;
     [SerializeField] private int _resourceGeneration = 10;
     [SerializeField] private Image _conqueringCircle = null;
     [SerializeField] private GameObject _conqueringCircleParent = null;
@@ -112,6 +113,7 @@ public class ControlPoint : NetworkBehaviour
             _timeInConquest = 0;
 
             _currentOwner = _currentConqueror;
+            _currentOwner.AddMaxUnits(_unitsOnConquered);
             _hasOwner = true;
 
             _conqueringCircleState = false;
@@ -133,6 +135,7 @@ public class ControlPoint : NetworkBehaviour
             ServerOnPointColorsChanged?.Invoke(null);
             ServerOnControlPointLost?.Invoke(_resourceGeneration, _currentOwner);
 
+            _currentOwner.RemoveMaxUnits(_unitsOnConquered);
             _currentOwner = null;
             _hasOwner = false;
 

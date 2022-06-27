@@ -138,7 +138,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   playerCameraTransform: {fileID: 4724849306883534740}
-  speed: 22.8
+  speed: 30
   screenBorderThickness: 10
   minHeight: 4
   maxHeight: 32
