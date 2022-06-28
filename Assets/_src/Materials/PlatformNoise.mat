@@ -95,7 +95,7 @@ Material:
     - _Blend: 0
     - _Brightness: 6
     - _BumpScale: 1
-    - _CellDensity: 2
+    - _CellDensity: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -110,7 +110,7 @@ Material:
     - _GlowReduction: 0.55
     - _Metallic: 0
     - _NoiseScale: 150
-    - _NoiseScrollSpeed: 0.9
+    - _NoiseScrollSpeed: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
