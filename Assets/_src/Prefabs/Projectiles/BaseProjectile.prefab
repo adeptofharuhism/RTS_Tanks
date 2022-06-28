@@ -150,10 +150,10 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   rb: {fileID: 4427418715744479610}
-  damageToDeal: 240
+  damageToDeal: 120
   _penetration: 10
-  destroyAfterSeconds: 2.7
-  launchForce: 30
+  destroyAfterSeconds: 2.5
+  launchForce: 32
 --- !u!114 &2137789306818149895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +170,6 @@ MonoBehaviour:
   syncInterval: 0.1
   colorRenderers:
   - {fileID: 9084776576822499176}
-  _light: {fileID: 0}
 --- !u!114 &6268281210997530681
 MonoBehaviour:
   m_ObjectHideFlags: 0

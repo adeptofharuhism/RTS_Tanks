@@ -48,6 +48,19 @@ public class ControlPoint : NetworkBehaviour
     }
 
     #region Server
+    public override void OnStartServer() {
+        RTSPlayer.ServerOnPlayerLost += ServerHandlePlayerLost;
+    }
+
+    public override void OnStopServer() {
+        RTSPlayer.ServerOnPlayerLost -= ServerHandlePlayerLost;
+    }
+
+    private void ServerHandlePlayerLost(RTSPlayer player) {
+        if (player == _currentOwner)
+            RemoveCurrentOwner();
+    }
+
     private void UpdateUnitsInZone() {
         foreach(var pair in _playersInConqueringZone) {
             for (int i = 0; i < pair.Value.Count; i++) {
@@ -130,16 +143,7 @@ public class ControlPoint : NetworkBehaviour
         _timeInConquest += Time.deltaTime;
 
         if (_timeInConquest > _conqueringTime) {
-            _timeInConquest = 0;
-
-            ServerOnPointColorsChanged?.Invoke(null);
-            ServerOnControlPointLost?.Invoke(_resourceGeneration, _currentOwner);
-
-            _currentOwner.RemoveMaxUnits(_unitsOnConquered);
-            _currentOwner = null;
-            _hasOwner = false;
-
-            _conqueringCircleState = false;
+            RemoveCurrentOwner();
         }
     }
 
@@ -147,11 +151,7 @@ public class ControlPoint : NetworkBehaviour
         _timeInConquest -= Time.deltaTime;
 
         if (_timeInConquest < 0) {
-            _timeInConquest = 0;
-
-            _lastConqueror = null;
-
-            _conqueringCircleState = false;
+            RemoveConquering();
         }
     }
 
@@ -159,12 +159,32 @@ public class ControlPoint : NetworkBehaviour
         _timeInConquest -= Time.deltaTime;
 
         if (_timeInConquest < 0) {
-            _timeInConquest = 0;
-
-            _lastConqueror = null;
-
-            _conqueringCircleState = false;
+            RemoveConquering();
         }
+    }
+
+    private void RemoveCurrentOwner() {
+        if (_currentOwner == null)
+            return;
+
+        _timeInConquest = 0;
+
+        ServerOnPointColorsChanged?.Invoke(null);
+        ServerOnControlPointLost?.Invoke(_resourceGeneration, _currentOwner);
+
+        _currentOwner.RemoveMaxUnits(_unitsOnConquered);
+        _currentOwner = null;
+        _hasOwner = false;
+
+        _conqueringCircleState = false;
+    }
+
+    private void RemoveConquering() {
+        _timeInConquest = 0;
+
+        _lastConqueror = null;
+
+        _conqueringCircleState = false;
     }
 
     private void OnTriggerEnter(Collider other) {

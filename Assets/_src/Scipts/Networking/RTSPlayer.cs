@@ -24,6 +24,8 @@ public class RTSPlayer : NetworkBehaviour
 
     public static event Action<bool> AuthorityOnPartyOwnerStateUpdated;
     public static event Action ClientOnInfoUpdated;
+    public static event Action<RTSPlayer> ServerOnPlayerLost;
+    public static event Action<RTSPlayer> ClientOnPlayerLost;
 
     [SyncVar(hook = nameof(ClientHandleResourcesUpdated))]
     private int _resources = DEFAULT_RESOURCES;
@@ -75,6 +77,7 @@ public class RTSPlayer : NetworkBehaviour
         Building.ServerOnBuildingSpawned += ServerHandleBuildingSpawned;
         Building.ServerOnBuildingDespawned += ServerHandleBuildingDespawned;
         UnitBase.ServerOnBaseSpawned += ServerHandleBaseSpawned;
+        UnitBase.ServerOnBaseDespawned += ServerHandleBaseDespawned;
 
         DontDestroyOnLoad(gameObject);
     }
@@ -85,6 +88,7 @@ public class RTSPlayer : NetworkBehaviour
         Building.ServerOnBuildingSpawned -= ServerHandleBuildingSpawned;
         Building.ServerOnBuildingDespawned -= ServerHandleBuildingDespawned;
         UnitBase.ServerOnBaseSpawned -= ServerHandleBaseSpawned;
+        UnitBase.ServerOnBaseDespawned -= ServerHandleBaseDespawned;
     }
 
     private void ServerHandleUnitSpawned(Unit unit) {
@@ -126,6 +130,13 @@ public class RTSPlayer : NetworkBehaviour
         spawnDirection.y = 0;
 
         _unitSpawnPoint = unitBasePosition + (spawnDirection.normalized * _spawnOffset);
+    }
+
+    private void ServerHandleBaseDespawned(UnitBase unitBase) {
+        if (unitBase.connectionToClient == connectionToClient) {
+            ServerOnPlayerLost?.Invoke(this);
+            RpcPlayerLost(this);
+        }
     }
 
     [Server]
@@ -304,6 +315,11 @@ public class RTSPlayer : NetworkBehaviour
 
     private void ClientHandleUnitMaxAmountUpdated(int oldValue, int newValue) {
         ClientOnUnitMaxAmountUpdated?.Invoke(newValue);
+    }
+
+    [ClientRpc]
+    private void RpcPlayerLost(RTSPlayer player) {
+        ClientOnPlayerLost?.Invoke(player);
     }
     #endregion
 }

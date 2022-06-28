@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 1, a: 0.49803922}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.49803922}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -238,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  _unitsOnConquered: 1
   _resourceGeneration: 10
   _conqueringCircle: {fileID: 5593209842538443801}
   _conqueringCircleParent: {fileID: 5593209843242879929}
@@ -256,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  _neutralColor: {r: 0, g: 0, b: 0, a: 1}
   _controlPointLight: {fileID: 5593209843162022707}
   _controlPointRenderer: {fileID: 6511790641586389841}
   _controlPointMinimapIconRenderer: {fileID: 5508997257732270957}
@@ -335,7 +336,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 30
   m_Range: 50
   m_SpotAngle: 30

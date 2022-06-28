@@ -95,6 +95,7 @@ Material:
     - _Blend: 0
     - _Brightness: 6
     - _BumpScale: 1
+    - _CellDensity: 2
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -108,8 +109,8 @@ Material:
     - _GlossyReflections: 0
     - _GlowReduction: 0.55
     - _Metallic: 0
-    - _NoiseScale: 500
-    - _NoiseScrollSpeed: 0.01
+    - _NoiseScale: 150
+    - _NoiseScrollSpeed: 0.9
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -124,10 +125,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseGlowColor: {r: 0.37735847, g: 0.37735847, b: 0.37735847, a: 0}
+    - _BaseGlowColor: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _GlowColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 6.14, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

@@ -52,9 +52,9 @@ MonoBehaviour:
   serverTickRate: 30
   offlineScene: Assets/_src/Scenes/Scene_Menu.unity
   onlineScene: 
-  transport: {fileID: 8141965927708195913}
+  transport: {fileID: 4049726233740557375}
   networkAddress: localhost
-  maxConnections: 100
+  maxConnections: 4
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 7916232590402715307, guid: f0f36e7e436d941438358c8fc283ac38, type: 3}
   autoCreatePlayer: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8141965927708195918}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
   m_Name: 
