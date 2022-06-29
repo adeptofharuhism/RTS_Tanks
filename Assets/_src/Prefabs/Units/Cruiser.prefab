@@ -363,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _price: 100
+  _price: 220
   _unitId: 3
   _unitIcon: {fileID: 3625043607559282579, guid: 0d267bc78a0864eb48358689b29ed20a, type: 3}
   health: {fileID: 5611778610774791132}
@@ -415,7 +415,7 @@ MonoBehaviour:
   syncInterval: 0.1
   agent: {fileID: 494460997147800059}
   targeter: {fileID: 7528542396147171234}
-  chaseRange: 8.9
+  chaseRange: 8
 --- !u!114 &6937099227122731188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _maxHealth: 1400
+  _maxHealth: 1500
   _armor: 1
 --- !u!114 &4419295287878238359
 MonoBehaviour:

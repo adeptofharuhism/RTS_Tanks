@@ -239,10 +239,10 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   _unitsOnConquered: 1
-  _resourceGeneration: 10
+  _resourceGeneration: 5
   _conqueringCircle: {fileID: 5593209842538443801}
   _conqueringCircleParent: {fileID: 5593209843242879929}
-  _conqueringTime: 15
+  _conqueringTime: 12
 --- !u!114 &5593209843028488181
 MonoBehaviour:
   m_ObjectHideFlags: 0

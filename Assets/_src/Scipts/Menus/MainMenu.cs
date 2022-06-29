@@ -10,7 +10,6 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private GameObject landingPagePanel = null;
     [SerializeField] private RTSNetworkManager _networkManager;
-    [SerializeField] private TMP_Text _hui;
 
     protected Callback<LobbyCreated_t> _lobbyCreated;
     protected Callback<GameLobbyJoinRequested_t> _gameLobbyJoinRequested;
@@ -25,21 +24,9 @@ public class MainMenu : MonoBehaviour
         _lobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);
     }
 
-    private void Start() {
-        try {
-            _hui.text = _networkManager.ToString();
-        } catch (Exception e) {
-            _hui.text = "Pizdec";
-        }
-    }
-
     public void HostLobby() {
-        _hui.text = "Pshel";
-
         if (!SteamManager.Initialized)
             return;
-
-        _hui.text = "Nakhui";
 
         landingPagePanel.SetActive(false);
 

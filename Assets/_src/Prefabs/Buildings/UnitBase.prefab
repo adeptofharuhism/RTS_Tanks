@@ -240,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  resourcePerIntervalAtStart: 20
+  resourcePerIntervalAtStart: 10
   interval: 1
 --- !u!114 &7596711669810025932
 MonoBehaviour:

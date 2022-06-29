@@ -247,7 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _price: 500
+  _price: 600
   _unitId: 5
   _unitIcon: {fileID: 21300000, guid: 119f93d0bcbf1e743bf5fcf237507d39, type: 3}
   health: {fileID: 449094753351240431}
@@ -299,7 +299,7 @@ MonoBehaviour:
   syncInterval: 0.1
   agent: {fileID: 449094753351240149}
   targeter: {fileID: 449094753351239976}
-  chaseRange: 99.9
+  chaseRange: 98
 --- !u!114 &449094753351240019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _aimingRange: 50
+  _aimingRange: 100
   _targeter: {fileID: 449094753351239976}
   _turretTransform: {fileID: 449094753351239726}
   _turretRotationSpeed: 140
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _cooldownTimeSeconds: 14.8
+  _cooldownTimeSeconds: 5.9
   _projectilePrefab: {fileID: 6115331115003688742, guid: ba5e2677dc5944e41b78891cf5e29702, type: 3}
   _gunTransform: {fileID: 449094753351239686}
   _turret: {fileID: 449094753351240081}

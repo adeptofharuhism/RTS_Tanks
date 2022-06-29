@@ -13771,6 +13771,14 @@ PrefabInstance:
       propertyPath: _territoryRenderers.Array.data[8]
       value: 
       objectReference: {fileID: 116047037}
+    - target: {fileID: 5593209843028488182, guid: c1dba905d2651244fb3e4030ae69751b, type: 3}
+      propertyPath: _unitsOnConquered
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593209843028488182, guid: c1dba905d2651244fb3e4030ae69751b, type: 3}
+      propertyPath: _resourceGeneration
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5593209843028488183, guid: c1dba905d2651244fb3e4030ae69751b, type: 3}
       propertyPath: sceneId
       value: 2534666503
