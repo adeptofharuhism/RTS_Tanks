@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RTSPlayer : NetworkBehaviour
 {
-    private const int DEFAULT_RESOURCES = 100;
+    private const int DEFAULT_RESOURCES = 200;
     public const int MAX_UNITS_DEFAULT = 8;
 
     [Header("Common")]
@@ -40,6 +40,7 @@ public class RTSPlayer : NetworkBehaviour
     private int _currentUnits = 0;
 
     private Vector3 _unitSpawnPoint = Vector3.zero;
+    [SyncVar]
     private Color _teamColor = new Color();
     private List<Unit> _myUnits = new List<Unit>();
     private List<Building> _myBuildings = new List<Building>();

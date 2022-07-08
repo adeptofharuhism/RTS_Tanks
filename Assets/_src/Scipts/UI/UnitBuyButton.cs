@@ -14,8 +14,13 @@ public class UnitBuyButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandl
 
     private void Start() {
         _priceText.text = _unit.Price.ToString();
-        _iconImage.sprite = _unit.Icon;
+        
         _player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
+
+        print(_player);
+        _iconImage.sprite = _unit.Icon;
+        print(_player.TeamColor);
+        _iconImage.color = _player.TeamColor;
     }
 
     private void OnEnable() {

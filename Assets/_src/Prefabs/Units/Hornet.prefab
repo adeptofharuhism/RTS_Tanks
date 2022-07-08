@@ -247,7 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _price: 600
+  _price: 1200
   _unitId: 5
   _unitIcon: {fileID: 21300000, guid: 119f93d0bcbf1e743bf5fcf237507d39, type: 3}
   health: {fileID: 449094753351240431}

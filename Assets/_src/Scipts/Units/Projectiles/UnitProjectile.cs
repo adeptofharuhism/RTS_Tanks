@@ -18,7 +18,7 @@ public class UnitProjectile : NetworkBehaviour
     }
 
     [ServerCallback]
-    private void OnTriggerEnter(Collider other) {
+    protected virtual void OnTriggerEnter(Collider other) {
         if (other.TryGetComponent(out NetworkIdentity networkIdentity)) {
             if (networkIdentity.connectionToClient == connectionToClient)
                 return;

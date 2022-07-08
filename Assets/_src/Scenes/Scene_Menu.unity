@@ -367,32 +367,15 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &198567390 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8141965927708195918, guid: dd6bba1e326233e4ba6424ea84ce0b8c, type: 3}
-  m_PrefabInstance: {fileID: 1419877579}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &198567398 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8141965927708195914, guid: dd6bba1e326233e4ba6424ea84ce0b8c, type: 3}
   m_PrefabInstance: {fileID: 1419877579}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198567390}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb00de8a679529c4d988169d543e1a70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &198567400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198567390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b798548c90f50fe4a9c00d53169c1aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &276803417
@@ -1189,7 +1172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &555491755
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1805,8 +1788,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1519053052}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1519053053}
+        m_TargetAssemblyTypeName: MainMenuLocal, Assembly-CSharp
         m_MethodName: HostLobby
         m_Mode: 1
         m_Arguments:
@@ -3773,6 +3756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1519053051}
   - component: {fileID: 1519053052}
+  - component: {fileID: 1519053053}
   m_Layer: 0
   m_Name: MainMenuDisplay
   m_TagString: Untagged
@@ -3803,14 +3787,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519053050}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a70099c3d1c6b974c92e0cfdd2083b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   landingPagePanel: {fileID: 168953761}
   _networkManager: {fileID: 198567398}
-  _hui: {fileID: 0}
+--- !u!114 &1519053053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519053050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0551022b4d74165479f27b1a03f5a234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landingPagePanel: {fileID: 168953761}
+  _networkManager: {fileID: 198567398}
 --- !u!1 &1533262039
 GameObject:
   m_ObjectHideFlags: 0

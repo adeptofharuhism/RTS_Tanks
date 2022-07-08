@@ -10,6 +10,8 @@ public class UnitProjectileATGM : UnitProjectile
     private Targetable _target = null;
 
     public override void OnStartServer() {
+        base.OnStartServer();
+
         _health.ServerOnDie += DestroySelf;
     }
 
@@ -29,6 +31,15 @@ public class UnitProjectileATGM : UnitProjectile
         }
 
         DestroySelf();
+    }
+
+    [ServerCallback]
+    protected override void OnTriggerEnter(Collider other) {
+        if (other.TryGetComponent(out ControlPoint controlPoint)) {
+            return;
+        }
+
+        base.OnTriggerEnter(other);
     }
 
     [Server]

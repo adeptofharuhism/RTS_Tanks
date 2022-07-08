@@ -185,11 +185,11 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   rb: {fileID: 6115331115003688942}
-  damageToDeal: 400
+  damageToDeal: 300
   _penetration: 10
   destroyAfterSeconds: 16.7
   launchForce: 12
-  _turnSpeed: 45
+  _turnSpeed: 30
   _health: {fileID: 5787178993905847167}
 --- !u!114 &5250133927799940350
 MonoBehaviour:
