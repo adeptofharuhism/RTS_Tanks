@@ -152,9 +152,9 @@ GameObject:
   - component: {fileID: 449094753351239992}
   - component: {fileID: 449094753351240081}
   - component: {fileID: 449094753351240063}
-  - component: {fileID: 8900943634531602430}
   - component: {fileID: 449094753351240028}
   - component: {fileID: 3987864566927944456}
+  - component: {fileID: 6604132270788156381}
   m_Layer: 12
   m_Name: Hornet
   m_TagString: Untagged
@@ -480,29 +480,6 @@ MonoBehaviour:
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   target: {fileID: 449094753351239726}
---- !u!114 &8900943634531602430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449094753351239863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db3edda1b5240d34496565a56a86581d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  _cooldownTimeSeconds: 5.9
-  _projectilePrefab: {fileID: 6115331115003688742, guid: ba5e2677dc5944e41b78891cf5e29702, type: 3}
-  _gunTransform: {fileID: 449094753351239686}
-  _turret: {fileID: 449094753351240081}
-  _maxAngle: -8
-  _minAngle: 10
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 4097
 --- !u!114 &449094753351240028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +529,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+--- !u!114 &6604132270788156381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449094753351239863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7950dd550b3a054483cc893186d00bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  _cooldownTimeSeconds: 5.9
+  _projectilePrefab: {fileID: 6115331115003688742, guid: ba5e2677dc5944e41b78891cf5e29702, type: 3}
+  _gunTransform: {fileID: 449094753351239686}
+  _turret: {fileID: 449094753351240081}
+  _maxAngle: -8
+  _minAngle: 10
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 4097
 --- !u!1 &449094753351239864
 GameObject:
   m_ObjectHideFlags: 0

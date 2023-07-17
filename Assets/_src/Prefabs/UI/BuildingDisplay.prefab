@@ -444,6 +444,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HornetBuyButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3837173730129714252, guid: 4a0f28a34d3046043945fc4175738e5e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8067924442544716581, guid: 4a0f28a34d3046043945fc4175738e5e, type: 3}
       propertyPath: _unit
       value: 

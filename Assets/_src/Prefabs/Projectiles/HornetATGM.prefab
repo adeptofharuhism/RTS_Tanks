@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8409016537014969664}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: AimAtPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,13 +45,10 @@ GameObject:
   - component: {fileID: 6115331115003688467}
   - component: {fileID: 6115331115003688942}
   - component: {fileID: 6115331115003688516}
-  - component: {fileID: 675790466222040400}
-  - component: {fileID: 5250133927799940350}
-  - component: {fileID: 5787178993905847167}
   - component: {fileID: 6115331115003688547}
   - component: {fileID: 6115331115003688536}
-  - component: {fileID: -8446732561524474594}
-  m_Layer: 12
+  - component: {fileID: -4379809194844243879}
+  m_Layer: 11
   m_Name: HornetATGM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +129,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6115331115003688742}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.349737
@@ -170,58 +167,6 @@ MonoBehaviour:
   visible: 0
   m_AssetId: ba5e2677dc5944e41b78891cf5e29702
   hasSpawned: 0
---- !u!114 &675790466222040400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6115331115003688742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 219c1acfca13ae0488c293e9d82b90db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  rb: {fileID: 6115331115003688942}
-  damageToDeal: 300
-  _penetration: 10
-  destroyAfterSeconds: 16.7
-  launchForce: 12
-  _turnSpeed: 30
-  _health: {fileID: 5787178993905847167}
---- !u!114 &5250133927799940350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6115331115003688742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4a6538e4c864e54dbbba2c6a5bda7ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  aimAtPoint: {fileID: 8409016537014969664}
---- !u!114 &5787178993905847167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6115331115003688742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b31c7e4379fd184488f04ee0f93e7d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  _maxHealth: 1
-  _armor: 0
 --- !u!114 &6115331115003688547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trailPrefab: {fileID: 1216567070312929546, guid: 72131ddd9c1479946aa5aae3f50c375b, type: 3}
   _teamColorSetter: {fileID: 6115331115003688547}
---- !u!114 &-8446732561524474594
+--- !u!114 &-4379809194844243879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,28 +206,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6115331115003688742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 19e3f7facbd53a54fa4a5bb77ac0eaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  clientAuthority: 0
-  sendInterval: 0.05
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 0
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 0
-  bufferTimeMultiplier: 1
-  bufferSizeLimit: 64
-  catchupThreshold: 4
-  catchupMultiplier: 0.1
-  onlySyncOnChange: 1
-  bufferResetMultiplier: 5
-  positionSensitivity: 0.01
-  rotationSensitivity: 0.01
-  scaleSensitivity: 0.01
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  rb: {fileID: 6115331115003688942}
+  damageToDeal: 300
+  _penetration: 10
+  destroyAfterSeconds: 10
+  launchForce: 20
