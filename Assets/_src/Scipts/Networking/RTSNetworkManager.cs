@@ -58,7 +58,7 @@ public class RTSNetworkManager : NetworkManager
 
         _playerList.Add(player);
 
-        player.SetDisplayName($"Gay {PlayerList.Count}");
+        player.SetDisplayName($"Guy {PlayerList.Count}");
 
         player.SetTeamColor(_teamColors[(PlayerList.Count - 1) % 4]);
 

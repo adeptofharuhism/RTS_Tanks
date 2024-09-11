@@ -4,6 +4,8 @@ using Mirror;
 
 public class ControlPointColourer : NetworkBehaviour
 {
+    private const string BaseColorMaterialParameter = "_BaseColor";
+
     [SerializeField] private Color _neutralColor = new Color();
     [SerializeField] private Light _controlPointLight = null;
     [SerializeField] private Renderer _controlPointRenderer = null;
@@ -38,11 +40,11 @@ public class ControlPointColourer : NetworkBehaviour
     #region Client
     private void ClientHandleCurrentColorChange(Color oldValue, Color newValue) {
         _controlPointLight.color = newValue;
-        _controlPointRenderer.material.SetColor("_GlowColor", newValue);
-        _controlPointMinimapIconRenderer.material.SetColor("_GlowColor", newValue);
+        _controlPointRenderer.material.SetColor(BaseColorMaterialParameter, newValue);
+        _controlPointMinimapIconRenderer.material.SetColor(BaseColorMaterialParameter, newValue);
 
         foreach (var renderer in _territoryRenderers) {
-            renderer.material.SetColor("_GlowColor", newValue);
+            renderer.material.SetColor(BaseColorMaterialParameter, newValue);
         }
     }
     #endregion
