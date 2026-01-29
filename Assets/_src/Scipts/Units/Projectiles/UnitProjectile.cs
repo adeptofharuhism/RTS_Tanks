@@ -10,7 +10,7 @@ public class UnitProjectile : NetworkBehaviour
     [SerializeField] protected float launchForce = 10f;
 
     private void Start() {
-        rb.velocity = transform.forward * launchForce;
+        rb.linearVelocity = transform.forward * launchForce;
     }
 
     public override void OnStartServer() {

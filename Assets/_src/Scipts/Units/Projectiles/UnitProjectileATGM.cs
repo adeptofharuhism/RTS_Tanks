@@ -57,8 +57,8 @@ public class UnitProjectileATGM : UnitProjectile
     private void AimAtTarget() {
         transform.LookAt(_target.AimAtPoint.position);
 
-        rb.velocity = Vector3.RotateTowards(
-            rb.velocity, 
+        rb.linearVelocity = Vector3.RotateTowards(
+            rb.linearVelocity, 
             _target.AimAtPoint.position - transform.position, 
             _turnSpeed * Time.deltaTime,
             0);
